@@ -68,3 +68,6 @@ FF14公式のパーティー募集ページや、ゲーム内の募集ページ�
 ### その他使用予定の技術
 - LINE通知: LINE Messaging API
 - チャット機能: WebSocket(ActionCable)
+
+## 画面遷移図
+Figma:https://www.figma.com/file/O2lB9Yh4DhWjZJ2S4sDLdl/Untitled?type=design&node-id=0%3A1&mode=design&t=hxarVRb6Huq3g6LK-1
