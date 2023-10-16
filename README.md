@@ -71,3 +71,6 @@ FF14公式のパーティー募集ページや、ゲーム内の募集ページ�
 
 ## 画面遷移図
 Figma:https://www.figma.com/file/O2lB9Yh4DhWjZJ2S4sDLdl/Untitled?type=design&node-id=0%3A1&mode=design&t=hxarVRb6Huq3g6LK-1
+
+## ER図
+[![Image from Gyazo](https://i.gyazo.com/0cfeebc56e7f73eb6d963a9556f4e06b.png)](https://gyazo.com/0cfeebc56e7f73eb6d963a9556f4e06b)
