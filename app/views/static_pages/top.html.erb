@@ -1,0 +1,43 @@
+<div class="container col-xxl-8 px-4 py-5">
+  <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+    <div class="col-10 col-sm-8 col-lg-6">
+      <%= image_tag 'top-bg', size: '700x500', class: 'd-block mx-lg-auto img-fluid', loading: 'lazy' %>
+    </div>
+    <div class="col-lg-6">
+      <h1 class="display-5 fw-bold lh-1 mb-3">FF14一緒に</h1>
+      <h1 class="display-5 fw-bold lh-1 mb-3">遊びませんか？</h1>
+      <p class="lead">やりたいコンテンツがあるけどなかなかマッチしない。そんなことありますよね？<br>そんな時はこのサイトで同じコンテンツに行きたい仲間とマッチングしよう！</p>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <%= link_to 'ログイン', '#', class: "btn btn-primary me-2" %>
+        <%= link_to '登録', '#', class: "btn btn-dark" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container px-4 py-5" id="featured-3">
+  <h2 class="pb-2 border-bottom">使い方</h2>
+  <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+    <div class="feature col d-flex flex-column">
+      <div class="mb-auto">
+        <h2>1. マッチング申請</h2>
+        <p>行きたいコンテンツや、参加したいロール、活動時間などの条件を入力してマッチングを開始しよう！</p>
+      </div>
+      <%= image_tag 'application_sample', size: '700x500', class: 'd-block mx-lg-auto img-fluid', loading: 'lazy' %>
+    </div>
+    <div class="feature col d-flex flex-column">
+      <div class="mb-auto">
+        <h2>2. マッチング</h2>
+        <p>マッチングを開始すると、同じコンテンツに行きたい仲間とマッチングします。<br>この時ロールなどの条件も加味してマッチングするので、ロールがかぶってしまったりすることもありません。</p>
+      </div>
+      <%= image_tag 'party_sample', size: '700x500', class: 'd-block mx-lg-auto img-fluid', loading: 'lazy' %>
+    </div>
+    <div class="feature col d-flex flex-column">
+      <div class="mb-auto">
+        <h2>3. パーティーチャット</h2>
+        <p>マッチングしたパーティーのメンバーとはチャットを行うことができます。<br>パーティーチャットを使用して活動時間や使うジョブなどを話し合おう！</p>
+      </div>
+      <%= image_tag 'chat_sample', size: '700x500', class: 'd-block mx-lg-auto img-fluid', loading: 'lazy' %>
+    </div>
+  </div>
+</div>
