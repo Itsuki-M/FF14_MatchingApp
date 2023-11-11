@@ -1,0 +1,32 @@
+<div class="modal modal-signin position-static d-block bg-secondary py-5" tabindex="-1" role="dialog" id="modalSignin">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content rounded-5 shadow">
+      <div class="modal-header p-5 pb-4 border-bottom-0">
+        <h2 class="fw-bold mb-0">会員登録</h2>
+      </div>
+
+      <div class="modal-body p-5 pt-0">
+        <%= form_with model: @user, local: true do |f| %>
+          <div class="form-group form-floating mb-3">
+            <%= f.text_field :name, class: 'form-control rounded-4', id: 'floatingInput', placeholder: 'name@example.com' %>
+            <%= f.label :name, for: 'floatingInput' %>
+          </div>
+          <div class="form-group form-floating mb-3">
+            <%= f.text_field :email, class: 'form-control rounded-4', id: 'floatingInput', placeholder: 'name@example.com' %>
+            <%= f.label :email, for: 'floatingInput' %>
+          </div>
+          <div class="form-group form-floating mb-3">
+            <%= f.password_field :password, class: 'form-control rounded-4', id: 'floatingInput', placeholder: 'name@example.com' %>
+            <%= f.label :password, for: 'floatingInput' %>
+          </div>
+          <div class="form-group form-floating mb-3">
+            <%= f.password_field :password_confirmation, class: 'form-control rounded-4', id: 'floatingInput', placeholder: 'name@example.com' %>
+            <%= f.label :password_confirmation, for: 'floatingInput' %>
+          </div>
+          <%= f.submit (t 'defaults.resister'), class: 'w-100 mb-2 btn btn-lg rounded-4 btn-primary' %>
+          <small class="text-muted">ユーザーが本サービスへの登録申込をしたことをもって利用規約およびプライバシーポリシーのすべての条項に同意したものとみなします。</small>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
