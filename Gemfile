@@ -64,3 +64,8 @@ end
 gem 'bootstrap', '~> 5.1.3'
 
 gem 'jquery-rails'
+
+gem 'sorcery'
+gem 'pry-byebug'
+
+gem 'rails-i18n', '~> 7.0.0'

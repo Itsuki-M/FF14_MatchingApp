@@ -1,0 +1,11 @@
+ja:
+  defaults:
+    login: 'ログイン'
+    resister: '登録'
+    logout: 'ログアウト'
+  users:
+    new:
+      title: '新規登録'
+    create:
+      success: '登録が完了しました。'
+      fail: '登録に失敗しました。'
