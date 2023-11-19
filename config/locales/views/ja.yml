@@ -3,9 +3,23 @@ ja:
     login: 'ログイン'
     resister: '登録'
     logout: 'ログアウト'
+    status: '現在の状況'
+  header:
+    profile: 'プロフィール'
+    blocked_users: 'ブロックしたユーザー'
   users:
     new:
       title: '新規登録'
     create:
       success: '登録が完了しました。'
       fail: '登録に失敗しました。'
+  user_sessions:
+    new:
+      title: 'ログイン'
+      password_forgot: 'パスワードを忘れた方はこちら'
+      register: '新規登録はこちら'
+    create:
+      success: 'ログインしました。'
+      fail: 'ログインに失敗しました。'
+    destroy:
+      success: 'ログアウトしました。'
