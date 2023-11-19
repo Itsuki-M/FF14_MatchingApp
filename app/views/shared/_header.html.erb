@@ -1,0 +1,21 @@
+<header class="bg-info text-white">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-between py-3">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+        <span class="fs-4 fst-italic ">FF14一緒に遊びませんか？</span>
+      </a>
+      <div class="dropdown text-end">
+          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            <%= image_tag 'sample', size: '40x40', alt: 'mdo', class: 'rounded-circle' %>
+          </a>
+          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+            <li><%= link_to (t 'header.profile'), '#', class: 'dropdown-item' %></li>
+            <li><%= link_to (t 'defaults.status'), '#', class: 'dropdown-item' %></li>
+            <li><%= link_to (t 'header.blocked_users'), '#', class: 'dropdown-item' %></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><%= link_to (t 'defaults.logout'), logout_path, class: 'dropdown-item', data: { turbo_method: :delete } %></li>
+          </ul>
+        </div>
+    </div>
+  </div>
+</header>
