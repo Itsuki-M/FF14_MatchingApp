@@ -1,5 +1,7 @@
 ja:
   defaults:
+    message:
+      require_login: 'ログインが必要です。'
     login: 'ログイン'
     resister: '登録'
     logout: 'ログアウト'
