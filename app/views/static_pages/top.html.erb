@@ -9,7 +9,7 @@
       <p class="lead">やりたいコンテンツがあるけどなかなかマッチしない。そんなことありますよね？<br>そんな時はこのサイトで同じコンテンツに行きたい仲間とマッチングしよう！</p>
       <div class="d-grid gap-2 d-md-flex justify-content-md-start">
         <% if logged_in? %>
-          <%= link_to (t 'defaults.status'), '#' , class: "btn btn-dark" %>
+          <%= link_to (t 'defaults.status'), requests_path , class: "btn btn-dark" %>
         <% else %>
           <%= link_to 'ログイン', login_path, class: "btn btn-primary me-2" %>
           <%= link_to '登録', new_user_path, class: "btn btn-dark" %>
