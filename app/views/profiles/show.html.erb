@@ -1,0 +1,49 @@
+<%= content_for(:title, t('.title')) %>
+<div class="container">
+  <div class="row">
+    <!-- 左側のプロフィール情報のコード -->
+    <div class="col-md-4 d-flex flex-column align-items-center justify-content-center" style="min-height: 85vh;">
+      <div class="profile-info text-center">
+        <h2><%= @profile.user.name %></h2>
+        <%= image_tag @profile.avatar_url, alt: @profile.user.name, class: 'rounded-circle mb-4', size: '110x110' %>
+        <%= link_to (t '.edit'), '#', class: 'w-100 mb-2 btn btn-lg rounded-4 btn-primary' %>
+      </div>
+    </div>
+    <!-- 右側の詳細情報のコード -->
+    <div class="col-md-8">
+      <div class="modal-header p-5 pb-4 border-bottom-0">
+        <h2 class = 'fw-bold' ><%= t('.title') %></h2>
+      </div>
+      <div class="modal-body p-5 pt-0">
+        <h4><%= Profile.human_attribute_name(:introduction) %></h4>
+        <div class="card mb-4">
+          <div class="card-body">
+            <%= @profile.introduction %>
+          </div>
+        </div>
+        <h4><%= Job.human_attribute_name(:name) %></h4>
+        <div class="card mb-4">
+          <div class="card-body">
+            <%= @main_job.is_a?(Job) ? @main_job.name : @main_job %>
+          </div>
+        </div>
+        <h4><%= Homeworld.human_attribute_name(:name) %></h4>
+        <div class="card mb-4">
+          <div class="card-body">
+            <%= @main_world.is_a?(Homeworld) ? @main_world.name : @main_world %>
+          </div>
+        </div>
+        <h4><%= Profile.human_attribute_name(:active_time) %></h4>
+        <div class="card">
+          <div class="card-body">
+            <% if @profile.active_time? %>
+              <%= @profile.active_time_i18n %>
+            <% else %>
+              特になし
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

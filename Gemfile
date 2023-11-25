@@ -69,3 +69,7 @@ gem 'sorcery'
 gem 'pry-byebug'
 
 gem 'rails-i18n', '~> 7.0.0'
+
+gem 'carrierwave'
+
+gem 'enum_help'
