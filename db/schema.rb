@@ -10,7 +10,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_09_104148) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_21_033259) do
+  create_table "homeworld_profiles", force: :cascade do |t|
+    t.integer "profile_id", null: false
+    t.integer "homeworld_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["homeworld_id"], name: "index_homeworld_profiles_on_homeworld_id"
+    t.index ["profile_id"], name: "index_homeworld_profiles_on_profile_id"
+  end
+
+  create_table "homeworlds", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "job_profiles", force: :cascade do |t|
+    t.integer "profile_id", null: false
+    t.integer "job_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["job_id"], name: "index_job_profiles_on_job_id"
+    t.index ["profile_id"], name: "index_job_profiles_on_profile_id"
+  end
+
+  create_table "jobs", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.string "avatar"
+    t.text "introduction"
+    t.integer "active_time"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
@@ -21,4 +61,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_09_104148) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "homeworld_profiles", "homeworlds"
+  add_foreign_key "homeworld_profiles", "profiles"
+  add_foreign_key "job_profiles", "jobs"
+  add_foreign_key "job_profiles", "profiles"
+  add_foreign_key "profiles", "users"
 end

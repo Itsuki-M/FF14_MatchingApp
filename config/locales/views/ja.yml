@@ -25,3 +25,12 @@ ja:
       fail: 'ログインに失敗しました。'
     destroy:
       success: 'ログアウトしました。'
+  profiles:
+    show:
+      title: 'プロフィール'
+      edit: 'プロフィール編集'
+      report: 'このユーザーを通報する'
+      block: 'このユーザーをブロックする'
+  requests:
+    index:
+      title: '現在の状況'

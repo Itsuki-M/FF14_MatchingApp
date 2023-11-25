@@ -6,10 +6,10 @@
       </a>
       <div class="dropdown text-end">
           <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-            <%= image_tag 'sample', size: '40x40', alt: 'mdo', class: 'rounded-circle' %>
+            <%= image_tag current_user.profile.avatar_url, size: '40x40', alt: 'mdo', class: 'rounded-circle' %>
           </a>
           <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-            <li><%= link_to (t 'header.profile'), '#', class: 'dropdown-item' %></li>
+            <li><%= link_to (t 'header.profile'), profile_path(current_user.profile), class: 'dropdown-item' %></li>
             <li><%= link_to (t 'defaults.status'), requests_path, class: 'dropdown-item' %></li>
             <li><%= link_to (t 'header.blocked_users'), '#', class: 'dropdown-item' %></li>
             <li><hr class="dropdown-divider"></li>
