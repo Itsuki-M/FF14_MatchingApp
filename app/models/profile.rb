@@ -9,4 +9,8 @@ class Profile < ApplicationRecord
   has_many :homeworlds, through: :homeworld_profiles
 
   enum active_time: { '0~3時': 0, '3~6時': 1, '6~9時': 2, '9~12時': 3, '12~15時': 4, '15~18時': 5, '18~21時': 6, '21~24時': 7 }
+
+  accepts_nested_attributes_for :user
+  accepts_nested_attributes_for :job_profiles, allow_destroy: true
+  accepts_nested_attributes_for :homeworld_profiles, allow_destroy: true
 end

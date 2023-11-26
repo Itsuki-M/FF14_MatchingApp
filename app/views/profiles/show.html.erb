@@ -6,7 +6,7 @@
       <div class="profile-info text-center">
         <h2><%= @profile.user.name %></h2>
         <%= image_tag @profile.avatar_url, alt: @profile.user.name, class: 'rounded-circle mb-4', size: '110x110' %>
-        <%= link_to (t '.edit'), '#', class: 'w-100 mb-2 btn btn-lg rounded-4 btn-primary' %>
+        <%= link_to (t '.edit'), edit_profile_path(current_user.profile), class: 'w-100 mb-2 btn btn-lg rounded-4 btn-primary' %>
       </div>
     </div>
     <!-- 右側の詳細情報のコード -->

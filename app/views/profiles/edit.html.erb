@@ -1,0 +1,48 @@
+<%= content_for(:title, t('.title')) %>
+<div class="container">
+  <%= form_with(model: @profile, local: true) do |form| %>
+    <div class="row">
+      <!-- 左側のカラム -->
+      <div class="col-md-4 d-flex flex-column align-items-center justify-content-center" style="min-height: 85vh;">
+        <h2><%= t('.title') %></h2>
+        <%= image_tag @profile.avatar_url, class: 'rounded-circle mb-4', id:'preview', size: '110x110' %>
+        
+        <div class="mb-3">
+          <%= form.file_field :avatar, onchange: 'previewFileWithId(preview)', class: 'form-control mb-3', accept: 'image/*' %>
+          <%= form.hidden_field :avatar_cache %>
+        </div>
+        <%= form.submit t('.edit'), class: 'btn btn-primary' %>
+      </div>
+      
+      <!-- 右側のカラム -->
+      <div class="col-md-8 d-flex flex-column justify-content-center">
+        <%= form.fields_for :user, @profile.user do |user_fields| %>
+          <div class="mb-3">
+            <%= user_fields.label :name %>
+            <%= user_fields.text_field :name, class: 'form-control' %>
+          </div>
+        <% end %>
+        <div class="mb-3">
+          <%= form.label :introduction, "自己紹介" %>
+          <%= form.text_area :introduction, class: 'form-control' %>
+        </div>
+        <%= form.fields_for :job_profiles do |job_profile_fields| %>
+          <div class="mb-3">
+            <%= job_profile_fields.label :job_id, "メインジョブ" %>
+            <%= job_profile_fields.collection_select :job_id, Job.all, :id, :name, { include_blank: "メインジョブを選択" }, { class: 'form-control' } %>
+          </div>
+        <% end %>
+        <%= form.fields_for :homeworld_profiles do |homeworld_profile_fields| %>
+          <div class="mb-3">
+            <%= homeworld_profile_fields.label :homeworld_id, "メインワールド" %>
+            <%= homeworld_profile_fields.collection_select :homeworld_id, Homeworld.all, :id, :name, { include_blank: "メインワールドを選択" }, { class: 'form-control' } %>
+          </div>
+        <% end %>
+        <div class="mb-3">
+          <%= form.label :active_time, "アクティブな時間帯" %>
+          <%= form.select :active_time, Profile.active_times.keys.map { |key| [key.humanize, key] }, {}, class: 'form-select' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -31,6 +31,12 @@ ja:
       edit: 'プロフィール編集'
       report: 'このユーザーを通報する'
       block: 'このユーザーをブロックする'
+    edit:
+      title: 'プロフィール編集'
+      edit: 'プロフィールを編集する'
+    update:
+      success: 'プロフィールを更新しました。'
+      fail: 'プロフィールの更新に失敗しました。'
   requests:
     index:
       title: '現在の状況'
