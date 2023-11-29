@@ -19,6 +19,20 @@ class MatchingsController < ApplicationController
     end
   end
 
+  def edit
+    @matching = current_user.matching
+  end
+
+  def update
+    @matching = current_user.matching
+    if @matching.update(matching_params)
+      redirect_to matching_path(@matching), success: t('.success')
+    else
+      render 'edit', danger: t('.danger')
+    end
+    
+  end
+
   def destroy
     @matching = current_user.matching
     if @matching.destroy
