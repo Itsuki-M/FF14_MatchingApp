@@ -1,0 +1,36 @@
+<%= content_for(:title, t('.title')) %>
+<div class = 'container'>
+  <div class = 'row'>
+    <div class = 'col-lg-8 offset-lg-2 d-flex flex-column justify-content-center' style = 'min-height: 85vh;'>
+      <h2><%= t '.detail' %></h2>
+      <h4><%= Matching.human_attribute_name(:role) %></h4>
+      <div class = 'card mb-4'>
+        <div class = 'card-body'>
+          <%= @matching.role_i18n %>
+        </div>
+      </div>
+      <h4><%= Matching.human_attribute_name(:data_center) %></h4>
+      <div class = 'card mb-4'>
+        <div class = 'card-body'>
+          <%= @matching.data_center_i18n %>
+        </div>
+      </div>
+      <h4><%= Matching.human_attribute_name(:play_content_id) %></h4>
+      <div class = 'card mb-4'>
+        <div class = 'card-body'>
+          <%= @matching.play_content.name %>
+        </div>
+      </div>
+      <h4><%= Matching.human_attribute_name(:play_time_id) %></h4>
+      <div class = 'card mb-4'>
+        <div class = 'card-body'>
+          <%= @matching.play_time.name %>
+        </div>
+      </div>
+      <div class='d-flex justify-content-around mb-4'>
+        <%= link_to t('.edit'), "#", class: 'btn btn-warning btn-lg' %>
+        <%= link_to t('.delete'), matching_path(@matching), data: {turbo_method: :delete, turbo_confirm: t('.confirm')}, class: 'btn btn-danger btn-lg' %>
+      </div>
+    </div>
+  </div>
+</div>
