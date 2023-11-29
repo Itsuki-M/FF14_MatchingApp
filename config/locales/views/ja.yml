@@ -40,3 +40,11 @@ ja:
   requests:
     index:
       title: '現在の状況'
+  matchings:
+    new:
+      title: 'マッチング募集'
+      select: 'マッチング条件を選択してください'
+      submit: '募集する'
+    create:
+      success: 'マッチング募集を行いました。'
+      danger: 'マッチング募集に失敗しました。'

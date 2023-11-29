@@ -19,3 +19,12 @@ ja:
         name: '主に使うジョブ'
       homeworld:
         name: 'ホームワールド'
+      matching:
+        role: 'ロール'
+        data_center: 'データセンター'
+        play_content_id: 'コンテンツ'
+        play_time_id: '遊ぶ時間'
+      play_content:
+        name: 'コンテンツ'
+      play_time:
+        name: '遊ぶ時間'
