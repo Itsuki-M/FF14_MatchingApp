@@ -1,0 +1,28 @@
+<div class='container'>
+  <div class = 'row'>
+    <div class = 'col-lg-8 offset-lg-2 d-flex flex-column justify-content-center' style = 'min-height: 85vh;'>
+      <h1><%= t '.select' %></h1>
+      <%= form_with model: @matching, local: true do |form| %>
+        <div class = 'form-group mb-3'>
+          <%= form.label :role, class: 'form-label' %>
+          <%= form.collection_select :role, Matching.roles.keys, :to_s, :humanize, {}, { class: 'form-select' } %>
+        </div>
+        <div class = 'form-group mb-3'>
+          <%= form.label :data_center, class: 'form-label' %>
+          <%= form.collection_select :data_center, Matching.data_centers.keys, :to_s, :humanize, {}, { class: 'form-select' } %>
+        </div>
+        <div class = 'form-group mb-3'>
+          <%= form.label :play_content_id, class: 'form-label' %>
+          <%= form.collection_select :play_content_id, PlayContent.all, :id, :name, {}, { class: 'form-select' } %>
+        </div>
+        <div class = 'form-group mb-3'>
+          <%= form.label :play_time_id, class: 'form-label' %>
+          <%= form.collection_select :play_time_id, PlayTime.all, :id, :name, {}, { class: 'form-select' } %>
+        </div>
+        <div class='d-grid gap-2'>
+          <%= form.submit t('.submit'), class: "btn btn-primary btn-lg" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

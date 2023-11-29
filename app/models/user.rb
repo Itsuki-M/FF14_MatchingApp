@@ -12,6 +12,8 @@ class User < ApplicationRecord
 
   has_one :profile, dependent: :destroy
 
+  has_one :matching, dependent: :destroy
+
   private
   
   def create_user_profile

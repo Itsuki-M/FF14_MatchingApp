@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_21_033259) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_28_095612) do
   create_table "homeworld_profiles", force: :cascade do |t|
     t.integer "profile_id", null: false
     t.integer "homeworld_id", null: false
@@ -41,6 +41,31 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_21_033259) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "matchings", force: :cascade do |t|
+    t.integer "role", null: false
+    t.integer "data_center", null: false
+    t.integer "user_id", null: false
+    t.integer "play_content_id", null: false
+    t.integer "play_time_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["play_content_id"], name: "index_matchings_on_play_content_id"
+    t.index ["play_time_id"], name: "index_matchings_on_play_time_id"
+    t.index ["user_id"], name: "index_matchings_on_user_id"
+  end
+
+  create_table "play_contents", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "play_times", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.string "avatar"
     t.text "introduction"
@@ -65,5 +90,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_21_033259) do
   add_foreign_key "homeworld_profiles", "profiles"
   add_foreign_key "job_profiles", "jobs"
   add_foreign_key "job_profiles", "profiles"
+  add_foreign_key "matchings", "play_contents"
+  add_foreign_key "matchings", "play_times"
+  add_foreign_key "matchings", "users"
   add_foreign_key "profiles", "users"
 end
