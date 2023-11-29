@@ -6,9 +6,25 @@ class MatchingsController < ApplicationController
   def create
     @matching = current_user.build_matching(matching_params)
     if @matching.save
-      redirect_to root_path, success: t('.success')
+      redirect_to matching_path(@matching), success: t('.success')
     else
       render 'new', danger: t('.danger')
+    end
+  end
+
+  def show
+    @matching = current_user.matching
+    unless @matching
+      redirect_to new_matching_path, warning: t('.warning')
+    end
+  end
+
+  def destroy
+    @matching = current_user.matching
+    if @matching.destroy
+      redirect_to new_matching_path, success: t('.success')
+    else
+      redirect_to matching_path(@matching), danger: t('.danger')
     end
   end
 
