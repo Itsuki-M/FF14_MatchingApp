@@ -40,3 +40,4 @@ app/.DS_Store
 app/assets/.DS_Store
 app/views/.DS_Store
 public/uploads
+.vscode

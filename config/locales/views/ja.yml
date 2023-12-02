@@ -40,11 +40,16 @@ ja:
   requests:
     index:
       title: '現在の状況'
+      party: '現在のパーティー'
+      now_matching: '現在マッチング状況'
+      new_matching: '新規マッチング'
   matchings:
     new:
       title: 'マッチング募集'
-      select: 'マッチング条件を選択してください'
+      select: 'マッチング条件を選択してください。'
       submit: '募集する'
+      warning: 'すでにマッチング中です。'
+      already_matched: 'すでにマッチング中です。'
     create:
       success: 'マッチング募集を行いました。'
       danger: 'マッチング募集に失敗しました。'
@@ -55,13 +60,19 @@ ja:
       delete: 'マッチング中止'
       edit: '条件変更'
       confirm: 'マッチングを中止します。よろしいですか？'
+      already_matched: 'すでにマッチング中です。'
     edit:
       title: 'マッチング条件変更'
       edit: '変更する'
       change: 'マッチング条件を変更してください。'
+      already_matched: 'すでにマッチング中です。'
     update:
       success: 'マッチング条件を変更しました。'
       danger: 'マッチング条件の変更に失敗しました。'
     destroy:
       success: 'マッチング募集を削除しました。'
       danger: 'マッチング募集の削除に失敗しました。'
+  partys:
+    index:
+      title: 'パーティーメンバー'
+      warning: 'パーティーメンバーはまだ集まっていません。'
