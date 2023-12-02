@@ -1,6 +1,14 @@
 class MatchingsController < ApplicationController
   def new
-    @matching = Matching.new
+    if Matching.is_user_matched?(current_user.id)
+      redirect_to partys_path, warning: t('.already_matched')
+      return
+    end
+    if current_user.matching.present?
+      redirect_to matching_path(current_user.matching), warning: t('.warning')
+    else
+      @matching = Matching.new
+    end
   end
 
   def create
@@ -13,6 +21,10 @@ class MatchingsController < ApplicationController
   end
 
   def show
+    if Matching.is_user_matched?(current_user.id)
+      redirect_to partys_path, warning: t('.already_matched')
+      return
+    end
     @matching = current_user.matching
     unless @matching
       redirect_to new_matching_path, warning: t('.warning')
@@ -20,6 +32,10 @@ class MatchingsController < ApplicationController
   end
 
   def edit
+    if Matching.is_user_matched?(current_user.id)
+      redirect_to partys_path, warning: t('.already_matched')
+      return
+    end
     @matching = current_user.matching
   end
 

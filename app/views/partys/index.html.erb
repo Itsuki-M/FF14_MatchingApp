@@ -1,0 +1,49 @@
+<div class="container d-flex flex-column justify-content-center" style = 'min-height: 85vh;'>
+  <div class="row justify-content-center mb-4">
+    <div class="col text-center">
+      <h2 class="display-4">マッチングしました！</h2>
+    </div>
+  </div>
+  <div class="row justify-content-center mb-4">
+    <div class="col text-center">
+      <h3>メンバー一覧</h3>
+    </div>
+  </div>
+  <div class="row justify-content-center mb-3">
+    <div class="col-6 d-flex justify-content-between align-items-center">
+      <h3>タンク</h3>
+      <div class="d-flex">
+        <% @tanks.each do |member| %>
+          <span class="mx-2 h6"><%= member.user.name %></span> <!-- 名前のフォントサイズを大きく -->
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <!-- ヒーラーのセクション -->
+  <div class="row justify-content-center mb-3">
+    <div class="col-6 d-flex justify-content-between align-items-center">
+      <h3>Healers</h3>
+      <div class="d-flex">
+        <% @healers.each do |member| %>
+          <span class="mx-2 h6"><%= member.user.name %></span> <!-- 名前のフォントサイズを大きく -->
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <!-- DPSのセクション -->
+  <div class="row justify-content-center mb-3">
+    <div class="col-6 d-flex justify-content-between align-items-center">
+      <h3>DPSes</h3>
+      <div class="d-flex">
+        <% @dpses.each do |member| %>
+          <span class="mx-2 h6"><%= member.user.name %></span> <!-- 名前のフォントサイズを大きく -->
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center mb-4">
+    <div class="col text-center">
+      <%= link_to 'パーティー画面に移動する', "#", class: "btn btn-info text-white" %>
+    </div>
+  </div>
+</div>

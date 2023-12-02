@@ -1,10 +1,22 @@
 <%= content_for(:title, t('.title')) %>
 <div class="cover-container d-flex w-75 p-3 mx-auto flex-column justify-content-center align-items-center" style= 'min-height: 85vh;'>
   <main class="px-3 text-center">
-    <h1 class="mb-4">あなたは今・・・中です</h1>
-    <p class="lead">
-      <%= link_to 'ボタン', '#', class: 'btn btn-info btn-lg fw-bold border-white w-100', style: 'padding: .75rem 1.25rem; color: white;' %>
-    </p>
+    <% if Matching.is_user_matched?(current_user.id) %>
+      <h1 class="mb-4">あなたは今マッチング中です。</h1>
+      <p class="lead">
+        <%= link_to t('.party'), partys_path, class: 'btn btn-info btn-lg fw-bold border-white w-100', style: 'padding: .75rem 1.25rem; color: white;' %>
+      </p>
+    <% elsif current_user.matching.present? %>
+      <h1 class="mb-4">あなたはマッチング待機中です。</h1>
+      <p class="lead">
+        <%= link_to t('.now_matching'), matching_path(current_user.matching), class: 'btn btn-info btn-lg fw-bold border-white w-100', style: 'padding: .75rem 1.25rem; color: white;' %>
+      </p>
+    <% else %>
+      <h1 class="mb-4">あなたは今募集をしていません。</h1>
+      <p class="lead">
+        <%= link_to t('.new_matching'), new_matching_path, class: 'btn btn-info btn-lg fw-bold border-white w-100', style: 'padding: .75rem 1.25rem; color: white;' %>
+      </p>
+    <% end %>
     <div class="mt-4">
       <%= link_to '使用方法はこちら', root_path, class: 'fs-4' %>
     </div>
