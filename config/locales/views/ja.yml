@@ -76,3 +76,9 @@ ja:
     index:
       title: 'パーティーメンバー'
       warning: 'パーティーメンバーはまだ集まっていません。'
+    detail:
+      title: 'パーティーメンバー詳細'
+      party_member: 'メンバー一覧'
+      party_chat: 'パーティーチャット'
+      delete: 'パーティーを抜ける'
+      confirm: 'パーティーを抜けます。よろしいですか？'
