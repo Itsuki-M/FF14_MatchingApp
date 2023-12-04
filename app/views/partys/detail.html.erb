@@ -1,0 +1,44 @@
+<%= content_for(:title, t('.title')) %>
+<div class="container d-flex flex-column justify-content-center" style = 'min-height: 85vh;'>
+  <div class="row">
+    <div class="col-md-4">
+      <h2><%= t('.title') %></h2>
+      <h3><%= t('.party_member') %></h3>
+      <div class="row">
+        <% @party_members.flatten.each_slice(2) do |members| %>
+          <% members.each do |member| %>
+            <div class="col-6 mb-5">
+              <%= link_to member.user.name, profile_path(member.user.profile), class: 'h5' %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="modal-body p-5 pt-0">
+        <h4><%= Matching.human_attribute_name(:data_center) %></h4>
+        <div class="card mb-4">
+          <div class="card-body">
+            <%= @party_members.first.data_center %>
+          </div>
+        </div>
+        <h4><%= Matching.human_attribute_name(:play_content_id) %></h4>
+        <div class="card mb-4">
+          <div class="card-body">
+            <%= @party_members.first.play_content.name %>
+          </div>
+        </div>
+        <h4><%= Matching.human_attribute_name(:play_time_id) %></h4>
+        <div class="card mb-4">
+          <div class="card-body">
+            <%= @party_members.first.play_time.name %>
+          </div>
+        </div>
+        <div class='d-flex justify-content-around mb-4'>
+        <%= link_to t('.party_chat'), '#', class: 'btn btn-info btn-lg text-light' %>
+        <%= link_to t('.delete'), matching_path(current_user.matching), data: {turbo_method: :delete, turbo_confirm: t('.confirm')}, class: 'btn btn-danger btn-lg' %>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>

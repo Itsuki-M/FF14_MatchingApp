@@ -5,6 +5,7 @@ ja:
       profile: 'プロフィール'
       job: 'ジョブ'
       homeworld: 'ホームワールド'
+      matching: 'マッチング'
     attributes:
       user:
         name: '名前'
