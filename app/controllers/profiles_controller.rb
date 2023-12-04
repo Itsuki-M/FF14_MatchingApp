@@ -6,6 +6,9 @@ class ProfilesController < ApplicationController
   end
 
   def edit
+    unless @profile.user == current_user
+      redirect_to root_path, danger: t('.danger')
+    end
     @user = @profile.user
     @profile.job_profiles.build if @profile.job_profiles.empty?
     @profile.homeworld_profiles.build if @profile.homeworld_profiles.empty?
