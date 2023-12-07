@@ -12,4 +12,8 @@ Rails.application.routes.draw do
   resources :partys, only: %i[index] do
     get 'detail', on: :collection
   end
+  resources :chat_rooms, only: %i[show] do
+    resources :chat_messages, only: %i[create]
+  end
+  mount ActionCable.server => '/cable'
 end

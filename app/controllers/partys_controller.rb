@@ -21,6 +21,15 @@ class PartysController < ApplicationController
       @tanks = @party_members.select { |member| member.role == 'tank' }
       @healers = @party_members.select { |member| member.role == 'healer' }
       @dpses = @party_members.select { |member| member.role == 'dps' }
+
+      party_id = generate_unique_party_id(current_user.matching)
+
+      @chat_room = ChatRoom.find_or_create_by(party_id: party_id) do |chat_room|
+        # パーティーメンバーをチャットルームに割り当てる
+        @party_members.each do |member|
+          chat_room.user_chat_rooms.build(user_id: member.user_id)
+        end
+      end
     else
       # パーティーメンバーが見つからない場合の処理
       redirect_to matching_path(current_user.matching), warning: t('.warning')
@@ -44,8 +53,18 @@ class PartysController < ApplicationController
     # 現在のユーザーが含まれているパーティーを検索
     @party_members = parties.find { |party| party.map(&:user_id).include?(current_user.id) }
 
+    party_id = generate_unique_party_id(current_user.matching)
+    @chat_room = ChatRoom.find_by(party_id: party_id)
+
     unless @party_members
       redirect_to matching_path(current_user.matching), warning: t('.warning')
     end
+  end
+
+  private
+
+  def generate_unique_party_id(matching)
+    info = [matching.data_center, matching.play_content_id, matching.play_time_id].join("-")
+    Digest::SHA1.hexdigest(info)
   end
 end

@@ -83,3 +83,12 @@ ja:
       party_chat: 'パーティーチャット'
       delete: 'パーティーを抜ける'
       confirm: 'パーティーを抜けます。よろしいですか？'
+  chat_rooms:
+    show:
+      title: 'パーティーチャット'
+      back: 'パーティーメンバー詳細に戻る'
+      submit: '送信'
+      warning: 'パーティーメンバーが集まっていません。'
+  chat_messages:
+    create:
+      danger: 'メッセージの送信に失敗しました。'
