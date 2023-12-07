@@ -61,6 +61,10 @@ group :development do
   # gem "spring"
 end
 
+group :production do
+  gem 'pg'
+end
+
 gem 'bootstrap', '~> 5.1.3'
 
 gem 'jquery-rails'
