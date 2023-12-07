@@ -14,6 +14,11 @@ class User < ApplicationRecord
 
   has_one :matching, dependent: :destroy
 
+  has_many :user_chat_rooms, dependent: :destroy
+  has_many :chat_rooms, through: :user_chat_rooms
+
+  has_many :user_messages, dependent: :destroy
+
   private
   
   def create_user_profile

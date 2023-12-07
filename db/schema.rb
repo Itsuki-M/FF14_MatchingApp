@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_28_095612) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_05_114344) do
+  create_table "chat_messages", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "chat_room_id", null: false
+    t.text "message", null: false
+    t.datetime "send_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chat_room_id"], name: "index_chat_messages_on_chat_room_id"
+    t.index ["user_id"], name: "index_chat_messages_on_user_id"
+  end
+
+  create_table "chat_rooms", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "party_id"
+  end
+
   create_table "homeworld_profiles", force: :cascade do |t|
     t.integer "profile_id", null: false
     t.integer "homeworld_id", null: false
@@ -76,6 +93,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_28_095612) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
+  create_table "user_chat_rooms", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "chat_room_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chat_room_id"], name: "index_user_chat_rooms_on_chat_room_id"
+    t.index ["user_id"], name: "index_user_chat_rooms_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
@@ -86,6 +112,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_28_095612) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "chat_messages", "chat_rooms"
+  add_foreign_key "chat_messages", "users"
   add_foreign_key "homeworld_profiles", "homeworlds"
   add_foreign_key "homeworld_profiles", "profiles"
   add_foreign_key "job_profiles", "jobs"
@@ -94,4 +122,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_28_095612) do
   add_foreign_key "matchings", "play_times"
   add_foreign_key "matchings", "users"
   add_foreign_key "profiles", "users"
+  add_foreign_key "user_chat_rooms", "chat_rooms"
+  add_foreign_key "user_chat_rooms", "users"
 end

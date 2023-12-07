@@ -1,0 +1,36 @@
+<%= content_for(:title, t('.title')) %>
+<div id="chat-room" data-chat-room-id="<%= @chat_room.id %>">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <%= link_to detail_partys_path do %>
+          <i class="bi bi-arrow-left"></i>
+        <% end %>
+        <%= t('.back') %>
+        <div id="messages">
+          <% @messages.reverse_each do |message| %>
+            <div class="<%= 'text-end' if message.user == current_user %>">
+              <% if message.user == current_user %>
+                <strong><%= message.user.name %></strong>
+                <%= image_tag(message.user.profile.avatar.url, size: '40x40', alt: 'mdo', class: 'rounded-circle') %>
+              <% else %>
+              <%= image_tag(message.user.profile.avatar.url, size: '40x40', alt: 'mdo', class: 'rounded-circle') %>
+                <strong><%= message.user.name %></strong>
+              <% end %>
+              <p><%= message.message %></p>
+            </div>
+          <% end %>
+        </div>
+
+        <%= form_with(model: [ @chat_room, @chat_room.chat_messages.new ], id: "new_message", local: true) do |form| %>
+          <div class="mb-3">
+            <%= form.text_field :message, class: "form-control" %>
+          </div>
+          <div class="mb-3">
+            <%= form.submit t('.submit'), class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

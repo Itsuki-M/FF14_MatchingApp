@@ -51,11 +51,17 @@ class MatchingsController < ApplicationController
 
   def destroy
     @matching = current_user.matching
-    if @matching.destroy
-      redirect_to new_matching_path, success: t('.success')
-    else
-      redirect_to matching_path(@matching), danger: t('.danger')
+    if @matching
+      chat_room = ChatRoom.joins(:user_chat_rooms).where('user_chat_rooms.user_id = ?', current_user.id)
+      chat_room.each(&:destroy)
+      
+      if @matching.destroy
+        redirect_to new_matching_path, success: t('.success')
+      else
+        redirect_to matching_path(@matching), danger: t('.danger')
+      end
     end
+    
   end
 
   private
