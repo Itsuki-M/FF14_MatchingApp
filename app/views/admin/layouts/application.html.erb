@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= page_title(yield(:title), admin: true) %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  </head>
+
+  <body>
+    <% if logged_in? %>
+      <%= render 'admin/shared/header' %>
+      <div class="d-flex"> <!-- Flexboxコンテナ -->
+        <%= render 'admin/shared/sidebar' %> <!-- サイドバー（ログイン時のみ表示） -->
+        <div class="flex-grow-1"> <!-- メインコンテンツ -->
+          <%= render 'admin/shared/flash_message' %>
+          <%= yield %> <!-- ここにビューがレンダリングされます -->
+        </div>
+      </div>
+    <% else %>
+      <%= render 'admin/shared/before_login_header' %>
+      <div class="flex-grow-1"> <!-- メインコンテンツ（ログインしていない時） -->
+        <%= render 'admin/shared/flash_message' %>
+        <%= yield %>
+      </div>
+    <% end %>
+    <%= render 'admin/shared/footer' %>
+  </body>
+</html>

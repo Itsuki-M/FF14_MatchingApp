@@ -2,6 +2,7 @@ ja:
   defaults:
     message:
       require_login: 'ログインが必要です。'
+      require_admin: '管理者権限が必要です。'
     login: 'ログイン'
     resister: '登録'
     logout: 'ログアウト'
@@ -113,3 +114,14 @@ ja:
       unblock: 'ブロック解除'
       confirm: 'ブロックを解除します。よろしいですか？'
       no_blocked_users: 'ブロックしたユーザーはいません。'
+  admin:
+    dashboard:
+      title: 'ダッシュボード'
+    user_sessions:
+      new:
+        title: 'ログイン'
+      create:
+        success: 'ログインしました。'
+        fail: 'ログインに失敗しました。'
+      destroy:
+        success: 'ログアウトしました。'
