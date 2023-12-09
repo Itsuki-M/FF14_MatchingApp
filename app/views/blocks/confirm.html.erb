@@ -1,0 +1,16 @@
+<%= content_for(:title, t('.title')) %>
+<div class="d-flex align-items-center justify-content-center" style="min-height: 85vh;">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center">
+        <h2 class="my-4"><%= t('.confirm') %></h2>
+        <h3><%= @user_to_block.name %></h3>
+        <%= image_tag @user_to_block.profile.avatar_url, class: "img-fluid rounded-circle my-3", size: '150x150' %>
+        <div class='d-flex justify-content-around mb-4'>
+          <%= link_to t('.block'), blocks_path(blocked_user_id: @user_to_block.id), data: { turbo_method: :post }, class: 'btn btn-danger btn-lg' %>
+          <%= link_to t('.cancel'), profile_path(@user_to_block.profile), class: 'btn btn-secondary btn-lg' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

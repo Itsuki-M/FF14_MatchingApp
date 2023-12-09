@@ -15,5 +15,7 @@ Rails.application.routes.draw do
   resources :chat_rooms, only: %i[show] do
     resources :chat_messages, only: %i[create]
   end
+  get 'blocks/confirm/:blocked_user_id', to: 'blocks#confirm', as: 'confirm_block'
+  resources :blocks, only: [:create, :destroy]
   mount ActionCable.server => '/cable'
 end
