@@ -6,6 +6,13 @@ class BlocksController < ApplicationController
     end
   end
 
+  def index
+    @blocked_users = current_user.blocker_blocks.includes(:blocked_user).map(&:blocked_user)
+    if @blocked_users.empty?
+      redirect_to root_path, warning: t('.no_blocked_users')
+    end
+  end
+
   def create
     @user = User.find(params[:blocked_user_id])
     block = current_user.blocker_blocks.create(blocked_user_id: @user.id)

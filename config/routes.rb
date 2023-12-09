@@ -16,6 +16,6 @@ Rails.application.routes.draw do
     resources :chat_messages, only: %i[create]
   end
   get 'blocks/confirm/:blocked_user_id', to: 'blocks#confirm', as: 'confirm_block'
-  resources :blocks, only: [:create, :destroy]
+  resources :blocks, only: %i[create destroy index]
   mount ActionCable.server => '/cable'
 end
