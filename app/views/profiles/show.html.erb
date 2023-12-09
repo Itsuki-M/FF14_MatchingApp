@@ -11,7 +11,7 @@
         <% else %>
           <%= link_to (t '.report'), '#', class: 'w-100 mb-4 btn btn-lg btn-warning'%>
           <% if current_user.blocker_blocks.find_by(blocked_user_id: @profile.user_id) %>
-            <%= link_to (t '.unblock'), block_path(current_user.blocker_blocks.find_by(blocked_user_id: @profile.user_id)), data: { turbo_method: :delete }, class: 'w-100 mb-2 btn btn-lg btn-danger'%>
+            <%= link_to (t '.unblock'), block_path(current_user.blocker_blocks.find_by(blocked_user_id: @profile.user_id)), data: { turbo_method: :delete, turbo_confirm: t('.confirm') }, class: 'w-100 mb-2 btn btn-lg btn-danger'%>
           <% else %>
             <%= link_to (t '.block'), confirm_block_path(blocked_user_id: @profile.user_id), class: 'w-100 mb-2 btn btn-lg btn-danger'%>
           <% end %>
