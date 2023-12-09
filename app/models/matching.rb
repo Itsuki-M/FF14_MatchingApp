@@ -9,11 +9,16 @@ class Matching < ApplicationRecord
   enum role: { tank: 0, healer: 1, dps: 2 }
   enum data_center: { gaia: 0, mana: 1, elemental: 2, meteor: 3}
 
-  def self.find_eligible_users(data_center, play_content_id, play_time_id)
+  def self.find_eligible_users(user_id, data_center, play_content_id, play_time_id)
+    blocked_users = Block.where(blocker_user_id: user_id).pluck(:blocked_user_id)
+    blocking_users = Block.where(blocked_user_id: user_id).pluck(:blocker_user_id)
     Matching.where(
       data_center: data_center, 
       play_content_id: play_content_id, 
       play_time_id: play_time_id
+    )
+    .where.not(
+      user_id: blocked_users + blocking_users
     )
   end
   
@@ -47,6 +52,7 @@ class Matching < ApplicationRecord
     return false unless current_user_matching
 
     eligible_users = find_eligible_users(
+      current_user_matching.user_id,
       current_user_matching.data_center, 
       current_user_matching.play_content_id, 
       current_user_matching.play_time_id
