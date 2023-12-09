@@ -31,6 +31,7 @@ ja:
       edit: 'プロフィール編集'
       report: 'このユーザーを通報する'
       block: 'このユーザーをブロックする'
+      unblock: 'このユーザーのブロックを解除する'
     edit:
       title: 'プロフィール編集'
       edit: 'プロフィールを編集する'
@@ -92,3 +93,16 @@ ja:
   chat_messages:
     create:
       danger: 'メッセージの送信に失敗しました。'
+  blocks:
+    confirm:
+      title: 'ブロック'
+      confirm: 'ブロックします。よろしいですか？'
+      block: 'ブロックする'
+      cancel: '戻る'
+      warning: 'すでにブロックしています。'
+    create:
+      success: 'ブロックしました。'
+      danger: 'ブロックに失敗しました。'
+    destroy:
+      success: 'ブロックを解除しました。'
+      danger: 'ブロックの解除に失敗しました。'

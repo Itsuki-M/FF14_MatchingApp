@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_05_114344) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_07_121804) do
+  create_table "blocks", force: :cascade do |t|
+    t.integer "blocker_user_id", null: false
+    t.integer "blocked_user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["blocked_user_id"], name: "index_blocks_on_blocked_user_id"
+    t.index ["blocker_user_id"], name: "index_blocks_on_blocker_user_id"
+  end
+
   create_table "chat_messages", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "chat_room_id", null: false
@@ -112,6 +121,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_05_114344) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "blocks", "users", column: "blocked_user_id"
+  add_foreign_key "blocks", "users", column: "blocker_user_id"
   add_foreign_key "chat_messages", "chat_rooms"
   add_foreign_key "chat_messages", "users"
   add_foreign_key "homeworld_profiles", "homeworlds"
