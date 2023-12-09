@@ -2,6 +2,7 @@ class PartysController < ApplicationController
   def index
     # 条件に合うユーザーを取得
     eligible_users = Matching.find_eligible_users(
+      current_user.id,
       current_user.matching.data_center, 
       current_user.matching.play_content_id, 
       current_user.matching.play_time_id
@@ -39,6 +40,7 @@ class PartysController < ApplicationController
   def detail
     # 条件に合うユーザーを取得
     eligible_users = Matching.find_eligible_users(
+      current_user.id,
       current_user.matching.data_center, 
       current_user.matching.play_content_id, 
       current_user.matching.play_time_id
