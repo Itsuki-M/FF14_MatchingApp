@@ -22,6 +22,8 @@ class User < ApplicationRecord
   has_many :blocker_blocks, class_name: 'Block', foreign_key: 'blocker_user_id'
   has_many :blocked_blocks, class_name: 'Block', foreign_key: 'blocked_user_id'
 
+  enum role: { general: 0, admin: 1 }
+
   private
   
   def create_user_profile

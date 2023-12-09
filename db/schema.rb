@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_07_121804) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_09_043224) do
   create_table "blocks", force: :cascade do |t|
     t.integer "blocker_user_id", null: false
     t.integer "blocked_user_id", null: false
@@ -118,6 +118,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_07_121804) do
     t.string "salt"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "role", default: 0, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
