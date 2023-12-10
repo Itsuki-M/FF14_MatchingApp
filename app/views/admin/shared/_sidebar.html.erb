@@ -2,10 +2,11 @@
   <hr>
   <ul class="nav nav-pills flex-column mb-auto">
     <li class="nav-item">
-      <a href="#" class="nav-link active" aria-current="page">
+      <%= link_to admin_users_path, class: "nav-link active", "aria-current": "page" do %>
         <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>
         ユーザー一覧
-      </a>
+      <% end %>
+
     </li>
   </ul>
   <hr>

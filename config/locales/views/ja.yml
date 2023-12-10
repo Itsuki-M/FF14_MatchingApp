@@ -125,3 +125,23 @@ ja:
         fail: 'ログインに失敗しました。'
       destroy:
         success: 'ログアウトしました。'
+    users:
+      index:
+        title: 'ユーザー一覧'
+        show: '詳細'
+        edit: '編集'
+        destroy: '削除'
+        confirm: 'ユーザーを削除します。よろしいですか？'
+      edit:
+        title: 'ユーザー編集'
+        edit: '編集'
+      update:
+        success: 'ユーザーを更新しました。'
+        danger: 'ユーザーの更新に失敗しました。'
+      show:
+        title: 'ユーザー詳細'
+        edit: '編集'
+        index: '一覧に戻る'
+      destroy:
+        success: 'ユーザーを削除しました。'
+        danger: 'ユーザーの削除に失敗しました。'

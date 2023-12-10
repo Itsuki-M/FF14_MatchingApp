@@ -24,6 +24,10 @@ class User < ApplicationRecord
 
   enum role: { general: 0, admin: 1 }
 
+  def self.ransackable_attributes(auth_object = nil)
+    %w[name email]
+  end
+
   private
   
   def create_user_profile
