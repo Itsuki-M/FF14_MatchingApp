@@ -80,12 +80,15 @@ ja:
     index:
       title: 'パーティーメンバー'
       warning: 'パーティーメンバーはまだ集まっていません。'
+      danger: 'マッチング情報がありません。'
     detail:
       title: 'パーティーメンバー詳細'
       party_member: 'メンバー一覧'
       party_chat: 'パーティーチャット'
       delete: 'パーティーを抜ける'
       confirm: 'パーティーを抜けます。よろしいですか？'
+      danger: 'マッチング情報がありません。'
+      warning: 'パーティーメンバーが集まっていません。'
   chat_rooms:
     show:
       title: 'パーティーチャット'
