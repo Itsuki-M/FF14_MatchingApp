@@ -12,6 +12,7 @@ ja:
         email: 'メールアドレス'
         password: 'パスワード'
         password_confirmation: 'パスワード（確認用）'
+        role: '役職'
       profile:
         avatar: 'アイコン'
         introduction: '自己紹介'
