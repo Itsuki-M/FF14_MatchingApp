@@ -24,5 +24,7 @@ Rails.application.routes.draw do
     delete 'logout', to: 'user_sessions#destroy'
     resources :users, only: %i[index show edit update destroy]
   end
+  resources :password_resets, only: %i[new create edit update]
   mount ActionCable.server => '/cable'
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end
