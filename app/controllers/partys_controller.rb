@@ -23,7 +23,7 @@ class PartysController < ApplicationController
       @healers = @party_members.select { |member| member.role == 'healer' }
       @dpses = @party_members.select { |member| member.role == 'dps' }
 
-      party_id = generate_unique_party_id(current_user.matching)
+      party_id = generate_unique_party_id(current_user.matching, @party_members)
 
       @chat_room = ChatRoom.find_or_create_by(party_id: party_id) do |chat_room|
         # パーティーメンバーをチャットルームに割り当てる
@@ -55,7 +55,7 @@ class PartysController < ApplicationController
     # 現在のユーザーが含まれているパーティーを検索
     @party_members = parties.find { |party| party.map(&:user_id).include?(current_user.id) }
 
-    party_id = generate_unique_party_id(current_user.matching)
+    party_id = generate_unique_party_id(current_user.matching, @party_members)
     @chat_room = ChatRoom.find_by(party_id: party_id)
 
     unless @party_members
@@ -65,8 +65,9 @@ class PartysController < ApplicationController
 
   private
 
-  def generate_unique_party_id(matching)
-    info = [matching.data_center, matching.play_content_id, matching.play_time_id].join("-")
+  def generate_unique_party_id(matching, users)
+    user_ids = users.map(&:user_id).sort.join("-")
+    info = [matching.data_center, matching.play_content_id, matching.play_time_id, user_ids].join("-")
     Digest::SHA1.hexdigest(info)
   end
 end
