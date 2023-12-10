@@ -114,6 +114,17 @@ ja:
       unblock: 'ブロック解除'
       confirm: 'ブロックを解除します。よろしいですか？'
       no_blocked_users: 'ブロックしたユーザーはいません。'
+  password_resets:
+    new:
+      title: 'パスワード再設定'
+      submit: '送信'
+    create:
+      success: 'パスワード再設定メールを送信しました。'
+    edit:
+      title: 'パスワード再設定'
+    update:
+      success: 'パスワードを再設定しました。'
+      danger: 'パスワードの再設定に失敗しました。'
   admin:
     dashboard:
       title: 'ダッシュボード'
