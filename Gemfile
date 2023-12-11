@@ -85,3 +85,5 @@ gem 'kaminari'
 gem 'ransack'
 
 gem 'config'
+
+gem 'fog-aws'
