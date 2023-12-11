@@ -23,8 +23,10 @@ class Matching < ApplicationRecord
   end
   
   def self.group_users_by_role(users)
-    users.group_by(&:role)
+    grouped = users.group_by(&:role)
+    { 'tank' => [], 'healer' => [], 'dps' => [] }.merge(grouped)
   end
+  
 
   def self.form_parties(grouped_users)
     parties = []
@@ -41,9 +43,9 @@ class Matching < ApplicationRecord
   end
   
   def self.enough_users_for_party?(grouped_users)
-    grouped_users['tank'].size >= 2 && 
-    grouped_users['healer'].size >= 2 && 
-    grouped_users['dps'].size >= 4
+    grouped_users['tank']&.size >= 2 &&
+    grouped_users['healer']&.size >= 2 &&
+    grouped_users['dps']&.size >= 4
   end
 
   def self.is_user_matched?(user_id)
