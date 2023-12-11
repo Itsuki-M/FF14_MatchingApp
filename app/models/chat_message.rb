@@ -4,6 +4,8 @@ class ChatMessage < ApplicationRecord
 
   before_save :set_send_at
 
+  after_create_commit { ChatMessageBroadcastJob.perform_later(self) }
+
   private
 
   def set_send_at
