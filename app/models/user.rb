@@ -17,7 +17,7 @@ class User < ApplicationRecord
   has_many :user_chat_rooms, dependent: :destroy
   has_many :chat_rooms, through: :user_chat_rooms
 
-  has_many :user_messages, dependent: :destroy
+  has_many :chat_messages, dependent: :destroy
 
   has_many :blocker_blocks, class_name: 'Block', foreign_key: 'blocker_user_id'
   has_many :blocked_blocks, class_name: 'Block', foreign_key: 'blocked_user_id'
