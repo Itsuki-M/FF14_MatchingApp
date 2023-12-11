@@ -1,18 +1,41 @@
 import consumer from "./consumer"
 
-// チャットルームのIDを動的に取得する方法を用意
-const chatRoomId = document.querySelector("#chat-room-id").value;
+document.addEventListener('turbolinks:load', () => {
+  const chatRoomElement = document.getElementById('chat-room');
+  if (chatRoomElement) {
+    const chatRoomId = chatRoomElement.getAttribute('data-chat-room-id');
+    const chatRoomChannel = consumer.subscriptions.create({ channel: "ChatRoomChannel", chat_room_id: chatRoomId }, {
+      connected() {
+        // 接続時の処理
+      },
 
-consumer.subscriptions.create({ channel: "ChatRoomChannel", chat_room_id: chatRoomId }, {
-  connected() {
-    // Called when the subscription is ready for use on the server
-  },
+      disconnected() {
+        // 切断時の処理
+      },
 
-  disconnected() {
-    // Called when the subscription has been terminated by the server
-  },
+      received(data) {
+        const messagesElement = document.getElementById('messages');
+        if (messagesElement) {
+          // 受信したメッセージをmessages要素に追加
+          messagesElement.innerHTML += data.message;
+        }
+      }
+    });
 
-  received(data) {
-    // チャットメッセージを表示する処理をここに記述
+    // メッセージ送信フォームのイベントリスナー
+    const formElement = document.getElementById('new_message');
+    if (formElement) {
+      formElement.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const messageInput = formElement.querySelector('#message');
+        const message = messageInput.value;
+
+        // ActionCableを通じてメッセージを送信
+        chatRoomChannel.perform('speak', { message: message });
+
+        // メッセージ入力欄をクリア
+        messageInput.value = '';
+      });
+    }
   }
 });
