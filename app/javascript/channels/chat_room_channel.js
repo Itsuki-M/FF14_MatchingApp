@@ -1,41 +1,36 @@
 import consumer from "./consumer"
+const path = window.location.pathname;
+const ROOM_ID = path.split("/").pop();
 
-document.addEventListener('turbolinks:load', () => {
-  const chatRoomElement = document.getElementById('chat-room');
-  if (chatRoomElement) {
-    const chatRoomId = chatRoomElement.getAttribute('data-chat-room-id');
-    const chatRoomChannel = consumer.subscriptions.create({ channel: "ChatRoomChannel", chat_room_id: chatRoomId }, {
-      connected() {
-        // 接続時の処理
-      },
+const chatRoom = consumer.subscriptions.create({channel: "ChatRoomChannel", chat_room_id: ROOM_ID, user_id: currentUserId}, {
+  connected() {
+    // Called when the subscription is ready for use on the server
+  },
 
-      disconnected() {
-        // 切断時の処理
-      },
+  disconnected() {
+    // Called when the subscription has been terminated by the server
+  },
 
-      received(data) {
-        const messagesElement = document.getElementById('messages');
-        if (messagesElement) {
-          // 受信したメッセージをmessages要素に追加
-          messagesElement.innerHTML += data.message;
-        }
-      }
-    });
-
-    // メッセージ送信フォームのイベントリスナー
-    const formElement = document.getElementById('new_message');
-    if (formElement) {
-      formElement.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const messageInput = formElement.querySelector('#message');
-        const message = messageInput.value;
-
-        // ActionCableを通じてメッセージを送信
-        chatRoomChannel.perform('speak', { message: message });
-
-        // メッセージ入力欄をクリア
-        messageInput.value = '';
-      });
+  received(data) {
+    const messages = document.getElementById('messages');
+    let messageHTML
+    if(data.user_id.toString() == currentUserId){
+      messageHTML = data.message;
+    }else{
+      messageHTML = data.second_message;
     }
+    messages.insertAdjacentHTML('beforeend', messageHTML);
+  },
+
+  speak: function(message) {
+    return this.perform('speak', { message: message });
+  }
+});
+
+window.addEventListener("keypress", function(event) {
+  if (event.key === 'Enter') {
+    chatRoom.speak(event.target.value);
+    event.target.value = '';
+    event.preventDefault();
   }
 });

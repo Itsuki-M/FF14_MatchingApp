@@ -1,0 +1,10 @@
+<div class="<%= 'message text-end' if chat_message.user == current_user %>">
+  <% if chat_message.user == current_user %>
+    <strong><%= chat_message.user.name %></strong>
+    <%= image_tag(chat_message.user.profile.avatar.url, size: '40x40', alt: 'mdo', class: 'rounded-circle') %>
+  <% else %>
+    <%= image_tag(chat_message.user.profile.avatar.url, size: '40x40', alt: 'mdo', class: 'rounded-circle') %>
+    <strong><%= chat_message.user.name %></strong>
+  <% end %>
+  <p><%= chat_message.message %></p>
+</div>
