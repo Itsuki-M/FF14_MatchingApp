@@ -1,0 +1,5 @@
+<div class='message text-end' >
+  <strong><%= chat_message.user.name %></strong>
+  <%= image_tag(chat_message.user.profile.avatar.url, size: '40x40', alt: 'mdo', class: 'rounded-circle') %>
+  <p><%= chat_message.message %></p>
+</div>
