@@ -28,11 +28,15 @@ document.addEventListener('turbo:load', function(){
     }
   });
 
-  window.addEventListener("keypress", function(event) {
-    if (event.key === 'Enter') {
-      chatRoom.speak(event.target.value);
-      event.target.value = '';
-      event.preventDefault();
-    }
-  });
+  const input = document.getElementById('chat_input');
+
+  if(input){
+    input.addEventListener('keypress', function(event) {
+      if (event.key === 'Enter') {
+        chatRoom.speak(event.target.value);
+        event.target.value = '';
+        event.preventDefault();
+      }
+    });
+  }
 });
