@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :requests, only: %i[index]
   resources :profiles, only: %i[show edit update]
   resources :matchings, only: %i[new create show edit update destroy]
-  resources :partys, only: %i[index] do
+  resources :parties, only: %i[index] do
     get 'detail', on: :collection
   end
   resources :chat_rooms, only: %i[show] do
