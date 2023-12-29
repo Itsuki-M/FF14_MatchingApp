@@ -4,7 +4,7 @@
     <% if Matching.is_user_matched?(current_user.id) %>
       <h1 class="mb-4">あなたは今マッチング中です。</h1>
       <p class="lead">
-        <%= link_to t('.party'), partys_path, class: 'btn btn-info btn-lg fw-bold border-white w-100', style: 'padding: .75rem 1.25rem; color: white;' %>
+        <%= link_to t('.party'), parties_path, class: 'btn btn-info btn-lg fw-bold border-white w-100', style: 'padding: .75rem 1.25rem; color: white;' %>
       </p>
     <% elsif current_user.matching.present? %>
       <h1 class="mb-4">あなたはマッチング待機中です。</h1>

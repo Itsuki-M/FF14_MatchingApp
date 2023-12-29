@@ -1,4 +1,4 @@
-class PartysController < ApplicationController
+class PartiesController < ApplicationController
   def index
     if Matching.is_user_matched?(current_user.id)
       # 条件に合うユーザーを取得

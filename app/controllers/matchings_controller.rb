@@ -1,7 +1,7 @@
 class MatchingsController < ApplicationController
   def new
     if Matching.is_user_matched?(current_user.id)
-      redirect_to partys_path, warning: t('.already_matched')
+      redirect_to parties_path, warning: t('.already_matched')
       return
     end
     if current_user.matching.present?
@@ -22,7 +22,7 @@ class MatchingsController < ApplicationController
 
   def show
     if Matching.is_user_matched?(current_user.id)
-      redirect_to partys_path, warning: t('.already_matched')
+      redirect_to parties_path, warning: t('.already_matched')
       return
     end
     @matching = current_user.matching
@@ -33,7 +33,7 @@ class MatchingsController < ApplicationController
 
   def edit
     if Matching.is_user_matched?(current_user.id)
-      redirect_to partys_path, warning: t('.already_matched')
+      redirect_to parties_path, warning: t('.already_matched')
       return
     end
     @matching = current_user.matching
