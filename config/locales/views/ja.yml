@@ -47,6 +47,7 @@ ja:
       party: '現在のパーティー'
       now_matching: '現在マッチング状況'
       new_matching: '新規マッチング'
+      matching_table: '募集人数はここから'
   matchings:
     new:
       title: 'マッチング募集'
@@ -57,6 +58,13 @@ ja:
     create:
       success: 'マッチング募集を行いました。'
       danger: 'マッチング募集に失敗しました。'
+    index:
+      title: 'マッチ待機人数'
+      search: '検索'
+      back: 'マッチング状況に戻る'
+      wait_count: '待機人数'
+      role: 'ロール'
+      count: '人数'
     show:
       warning: 'マッチング情報がありません。新規作成してください。'
       title: 'マッチング情報'

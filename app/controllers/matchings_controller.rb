@@ -31,6 +31,12 @@ class MatchingsController < ApplicationController
     end
   end
 
+  def index
+    @q = Matching.ransack(params[:q])
+    @matchings = @q.result(distinct: true)
+    @waiting_counts = @matchings.group(:role).count
+  end
+
   def edit
     if Matching.is_user_matched?(current_user.id)
       redirect_to parties_path, warning: t('.already_matched')

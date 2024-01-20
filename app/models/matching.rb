@@ -66,4 +66,8 @@ class Matching < ApplicationRecord
     # 現在のユーザーが含まれているパーティーがあるか確認
     parties.any? { |party| party.map(&:user_id).include?(user_id) }
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    %w[play_content_id play_time_id data_center role]
+  end
 end

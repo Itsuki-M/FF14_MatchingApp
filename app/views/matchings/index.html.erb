@@ -1,0 +1,46 @@
+<%= content_for(:title, t('.title')) %>
+<div class="container" style= 'min-height: 90vh;'>
+  <%= link_to requests_path do %>
+    <i class="bi bi-arrow-left"></i>
+  <% end %>
+  <%= t('.back') %>
+  <%= search_form_for @q, html: { class: 'row g-3 d-flex justify-content-center' } do |f| %>
+    <div class="col-auto">
+      <%= f.label :play_content_id %>
+      <%= f.collection_select :play_content_id_eq, PlayContent.all, :id, :name, { include_blank: true }, { class: 'form-control' } %>
+    </div>
+
+    <div class="col-auto">
+      <%= f.label :play_time_id %>
+      <%= f.collection_select :play_time_id_eq, PlayTime.all, :id, :name, { include_blank: true }, { class: 'form-control' } %>
+    </div>
+
+    <div class="col-auto">
+      <%= f.label :data_center %>
+      <%= f.select :data_center_eq, Matching.data_centers_i18n.invert.map{|key, value| [key, Matching.data_centers[value]]}, { include_blank: true }, { class: 'form-control' } %>
+    </div>
+
+    <div class = "col-auto">
+      <%= f.submit t('.search'), class: 'btn btn-primary mt-3' %>
+    </div>
+  <% end %>
+
+  <h1 class="text-center"><%= t('.wait_count')%></h1>
+
+  <table class="table table-bordered text-center">
+    <thead>
+      <tr>
+        <th><%= t('.role') %></th>
+        <th><%= t('.count') %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @waiting_counts.each do |role, count| %>
+        <tr>
+          <td><%= role %></td>
+          <td><%= count %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
