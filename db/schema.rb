@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_10_015444) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_21_035134) do
   create_table "blocks", force: :cascade do |t|
     t.integer "blocker_user_id", null: false
     t.integer "blocked_user_id", null: false
@@ -80,6 +80,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_10_015444) do
     t.index ["user_id"], name: "index_matchings_on_user_id"
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.integer "sender_id", null: false
+    t.integer "recipient_id", null: false
+    t.string "notifiable_type", null: false
+    t.integer "notifiable_id", null: false
+    t.boolean "unread", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["notifiable_type", "notifiable_id"], name: "index_notifications_on_notifiable"
+    t.index ["recipient_id"], name: "index_notifications_on_recipient_id"
+    t.index ["sender_id"], name: "index_notifications_on_sender_id"
+  end
+
   create_table "play_contents", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -138,6 +151,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_10_015444) do
   add_foreign_key "matchings", "play_contents"
   add_foreign_key "matchings", "play_times"
   add_foreign_key "matchings", "users"
+  add_foreign_key "notifications", "users", column: "recipient_id"
+  add_foreign_key "notifications", "users", column: "sender_id"
   add_foreign_key "profiles", "users"
   add_foreign_key "user_chat_rooms", "chat_rooms"
   add_foreign_key "user_chat_rooms", "users"
