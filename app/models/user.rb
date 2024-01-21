@@ -22,6 +22,10 @@ class User < ApplicationRecord
   has_many :blocker_blocks, class_name: 'Block', foreign_key: 'blocker_user_id'
   has_many :blocked_blocks, class_name: 'Block', foreign_key: 'blocked_user_id'
 
+  has_many :sent_notifications, class_name: 'Notification', foreign_key: 'sender_id', dependent: :destroy
+  has_many :received_notifications, class_name: 'Notification', foreign_key: 'recipient_id', dependent: :destroy
+  has_many :notifications, as: :notifiable, dependent: :destroy
+
   enum role: { general: 0, admin: 1 }
 
   def self.ransackable_attributes(auth_object = nil)

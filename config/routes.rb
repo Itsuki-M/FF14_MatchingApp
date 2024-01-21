@@ -25,6 +25,11 @@ Rails.application.routes.draw do
     resources :users, only: %i[index show edit update destroy]
   end
   resources :password_resets, only: %i[new create edit update]
+  resources :notifications, only: %i[index update] do
+    collection do
+      delete :mark_all_as_read
+    end
+  end
   mount ActionCable.server => '/cable'
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end
