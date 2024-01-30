@@ -136,6 +136,12 @@ ja:
     update:
       success: 'パスワードを再設定しました。'
       danger: 'パスワードの再設定に失敗しました。'
+  oauths:
+    oauth:
+      success: "%{provider}でログインしました。"
+    callback:
+      success: "%{provider}でログインしました。"
+      danger: "%{provider}でのログインに失敗しました。"
   admin:
     dashboard:
       title: 'ダッシュボード'

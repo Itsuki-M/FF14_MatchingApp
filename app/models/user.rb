@@ -26,6 +26,9 @@ class User < ApplicationRecord
   has_many :received_notifications, class_name: 'Notification', foreign_key: 'recipient_id', dependent: :destroy
   has_many :notifications, as: :notifiable, dependent: :destroy
 
+  has_many :authentications, dependent: :destroy
+  accepts_nested_attributes_for :authentications
+
   enum role: { general: 0, admin: 1 }
 
   def self.ransackable_attributes(auth_object = nil)

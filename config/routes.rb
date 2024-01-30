@@ -30,6 +30,9 @@ Rails.application.routes.draw do
       delete :mark_all_as_read
     end
   end
+  post "oauth/callback", to: "oauths#callback"
+  get "oauth/callback", to: "oauths#callback"
+  get "oauth/:provider", to: "oauths#oauth", as: :auth_at_provider
   mount ActionCable.server => '/cable'
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end
