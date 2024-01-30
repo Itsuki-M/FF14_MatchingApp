@@ -27,6 +27,7 @@
           <%= f.submit (t 'defaults.resister'), class: 'w-100 mb-2 btn btn-lg rounded-4 btn-primary' %>
           <small class="text-muted">ユーザーが本サービスへの登録申込をしたことをもって利用規約およびプライバシーポリシーのすべての条項に同意したものとみなします。</small>
         <% end %>
+        <%= link_to 'Login with Google', auth_at_provider_path(provider: :google) %>
       </div>
     </div>
   </div>
