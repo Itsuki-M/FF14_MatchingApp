@@ -4,3 +4,6 @@ default_url_options:
 
 sorcery:
   google_callback_url: 'https://www.ff14matching.com/oauth/callback?provider=google'
+
+line:
+  line_callback_url: 'https://www.ff14matching.com/oauth/callback?provider=line'
