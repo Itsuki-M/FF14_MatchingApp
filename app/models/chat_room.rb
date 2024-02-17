@@ -31,9 +31,32 @@ class ChatRoom < ApplicationRecord
     recipient_ids.each do |recipient_id|
       Notification.create!(sender_id: sender_id, recipient_id: recipient_id, notifiable: self)
     end
+
+    users.each do |user|
+      if valid_user_for_nortification?(user)
+        send_line_message(user.email, "マッチングしました! チャットでメンバーと話し合おう! https://www.ff14matching.com")
+      end
+    end
   end
 
   def destroy_notification
     Notification.where(notifiable: self).destroy_all
+  end
+
+  def valid_user_for_nortification?(user)
+    user.email.present? &&
+      user.email.start_with?('U') &&
+      user.email.length == 33 &&
+      user.email.exclude?('@')
+  end
+
+  def send_line_message(user_id, message)
+    message = {
+      type: 'text',
+      text: message
+    }
+    client = Rails.application.config.line_bot_client
+    response = client.push_message(user_id, message)
+    puts response
   end
 end
