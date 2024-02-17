@@ -87,3 +87,5 @@ gem 'ransack'
 gem 'config'
 
 gem 'fog-aws'
+
+gem 'line-bot-api'
